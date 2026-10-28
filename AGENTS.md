@@ -16,3 +16,4 @@
 - Add or update tests when implementing functionality; document setup and execution commands in the README.
 
 Use the most appropriate language available (golang or python)
+uv is used as .venv and as package manager

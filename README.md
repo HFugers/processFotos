@@ -9,17 +9,19 @@ De gebruiker dan dus na de processing de map met foto's en html op een stick of 
 
 ## FOTO_sort_app
 
-De eerste versie staat in `foto_sort.py`. Vereist Python 3.10 of hoger.
-Installeer de EXIF-ondersteuning vanuit de hoofdmap van het project:
+De eerste versie staat in `foto_sort.py`. Het project vereist Python 3.12 of
+hoger en gebruikt UV voor de virtuele omgeving en dependencies. Voer vanuit de
+projectmap eenmalig uit om de omgeving te maken en de vastgelegde dependencies
+te installeren:
 
 ```sh
-python -m pip install -r requirements.txt
+uv sync
 ```
 
 Voer eerst een proef uit; hiermee worden geen bestanden verplaatst:
 
 ```sh
-python foto_sort.py /pad/naar/fotos --dry-run
+uv run python foto_sort.py /pad/naar/fotos --dry-run
 ```
 
 Zonder parameters toont het programma de helptekst met alle opties en
@@ -38,7 +40,7 @@ bestanden worden nooit overschreven.
 Voer de tests uit met:
 
 ```sh
-python -m unittest discover -s tests
+uv run python -m unittest discover -s tests
 ```
 
 ## FOTO_wrapper_app
@@ -49,7 +51,7 @@ Een map telt mee als jaartalmap wanneer de naam uit vier cijfers bestaat en
 de map ten minste één ondersteunde foto bevat.
 
 ```sh
-python foto_wrapper.py /pad/naar/fotos
+uv run python foto_wrapper.py /pad/naar/fotos
 ```
 
 De uitvoer bevat `index.html`, `foto-album.css` en `foto-album.js` in de
@@ -70,11 +72,11 @@ Zonder argumenten toont het programma de helptekst. Voor een afwijkende
 miniatuurgrootte:
 
 ```sh
-python foto_wrapper.py /pad/naar/fotos --thumbnail-width 320
+uv run python foto_wrapper.py /pad/naar/fotos --thumbnail-width 320
 ```
 
 De tests voor beide applicaties voer je uit vanuit de projectmap:
 
 ```sh
-python -m unittest discover -s tests
+uv run python -m unittest discover -s tests
 ```
